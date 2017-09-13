@@ -13,12 +13,12 @@
 </template>
 <style lang="scss">
 .side-nav {
-  width: 200px;
-  margin: 20px;
+  width: 260px;
+  margin: 20px 40px;
 }
 
 .el-menu-vertical-demo {
-  width: 200px;
+  width: 260px;
   position: fixed;
 }
 </style>
@@ -38,11 +38,16 @@ export default {
         this.showSideNav = false
         return
       }
-      this.routesConfig = routes[0].children.map((item) => {
-        if (this.$route.path.indexOf(item.path) !== -1) {
-          return item
+      routes.forEach((item) => {
+        if (this.$route.path.indexOf(item.path) !== -1 && item.path !== '/') {
+          this.routesConfig = item.children.map((child) => {
+            return {
+              path: child.path,
+              name: child.name
+            }
+          })
         }
-      })[0].children
+      })
       this.showSideNav = true
     }
   },

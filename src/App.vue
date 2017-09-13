@@ -119,6 +119,12 @@ table.table {
   border-radius: 10px;
   border: whiteSmoke solid 3px;
 }
+
+hr {
+  border: solid 1px #eaeefb;
+  margin: 30px 0;
+  height: 0;
+}
 </style>
 <script>
 import 'highlight.js/styles/color-brewer.css'
