@@ -6,10 +6,16 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import demoBlock from '@/components/demo-block'
+import MainFooter from '@/components/footer'
+import MainHeader from '@/components/header'
+import SideNav from '@/components/side-nav'
 
-Vue.component('demo-block', demoBlock)
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+Vue.component('demo-block', demoBlock)
+Vue.component('main-footer', MainFooter)
+Vue.component('main-header', MainHeader)
+Vue.component('side-nav', SideNav)
 /* eslint-disable no-new */
 
 new Vue({

@@ -1,3 +1,12 @@
+<template>
+  <div id="app">
+    <main-header></main-header>
+    <div class="main-cnt">
+      <router-view></router-view>
+    </div>
+    <main-footer></main-footer>
+  </div>
+</template>
 <style lang="scss">
 html,
 body {
@@ -58,13 +67,6 @@ textarea {
   min-height: 100%;
 }
 
-.container,
-.page-container {
-  width: 1140px;
-  padding: 0 30px;
-  margin: 0 auto;
-}
-
 .demo {
   margin: 20px 0;
 }
@@ -81,10 +83,6 @@ textarea {
   .page-container {
     padding: 0 20px;
   }
-}
-
-.header-anchor {
-  opacity: 0;
 }
 
 table.table {
@@ -110,14 +108,18 @@ table.table {
     max-width: 250px;
   }
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+ ::-webkit-scrollbar-thumb {
+  background: #324157;
+  border-radius: 10px;
+  border: whiteSmoke solid 3px;
+}
 </style>
-
-<template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
-</template>
-
 <script>
 import 'highlight.js/styles/color-brewer.css'
 

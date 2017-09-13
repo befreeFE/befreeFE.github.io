@@ -149,8 +149,6 @@
 </style>
 
 <script type="text/babel">
-import compoLang from '../i18n/component.json'
-// import { version } from 'main/index.js'
 let version = 1
 export default {
   data () {
@@ -207,12 +205,13 @@ export default {
   },
 
   computed: {
-    lang () {
-      return 'zh-CN'
-    },
-
     langConfig () {
-      return compoLang.filter(config => config.lang === this.lang)[0]['demo-block']
+      return {
+        'hide-text': '隐藏代码',
+        'show-text': '显示代码',
+        'button-text': '在线运行',
+        'tooltip-text': '前往 jsfiddle.net 运行此示例'
+      }
     },
 
     blockClass () {
