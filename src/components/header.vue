@@ -6,9 +6,6 @@
         <h1 class="logo-txt">EMO</h1>
       </div>
       <el-menu theme="dark" :default-active="active" class="el-menu-demo" mode="horizontal" router>
-        <el-menu-item index="/">
-          首页
-        </el-menu-item>
         <el-menu-item :index="item.path" v-for="item in routesConfig" :key="item.name">
           {{item.name}}
         </el-menu-item>
@@ -58,8 +55,13 @@ export default {
   },
   methods: {
     init () {
-      this.routesConfig = routes[0].children
-      this.active = this.$route.path === '/' ? '/' : this.$route.matched[1].path
+      this.routesConfig = routes.map((item) => {
+        return {
+          path: item.path,
+          name: item.name
+        }
+      })
+      this.active = this.$route.path === '/' ? '/' : this.$route.matched[0].path
     }
   },
   watch: {
