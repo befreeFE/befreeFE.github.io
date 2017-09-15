@@ -5,10 +5,11 @@
         <img src="../assets/logo.png" class="logo-img">
         <h1 class="logo-txt">EMO</h1>
       </div>
-      <el-menu theme="dark" :default-active="active" class="el-menu-demo" mode="horizontal" router>
+      <el-menu theme="dark" :default-active="active" class="el-menu-demo" mode="horizontal" router v-if="routesConfig.length !== 0">
         <el-menu-item :index="item.path" v-for="item in routesConfig" :key="item.name">
           {{item.name}}
         </el-menu-item>
+        <a href="https://leer0911.github.io/" target="_blank" class="el-menu--horizontal el-menu-item">阅读寻知</a>
       </el-menu>
     </div>
   </header>
@@ -50,7 +51,14 @@ export default {
   data () {
     return {
       routesConfig: [],
-      active: '/'
+      active: '/',
+      extendObj: {
+        data () {
+          return {
+            a: 'a'
+          }
+        }
+      }
     }
   },
   methods: {

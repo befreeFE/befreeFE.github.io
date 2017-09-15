@@ -3,14 +3,15 @@ var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 var md = require('markdown-it')()
-var slugify = require('transliteration').slugify
 var striptags = require('./strip-tags')
+var slugify = require('transliteration').slugify
 function convert (str) {
   str = str.replace(/(&#x)(\w{4});/gi, function ($0) {
     return String.fromCharCode(parseInt(encodeURIComponent($0).replace(/(%26%23x)(\w{4})(%3B)/g, '$2'), 16))
   })
   return str
 }
+
 var wrap = function (render) {
   return function () {
     return render.apply(this, arguments)
@@ -18,6 +19,7 @@ var wrap = function (render) {
       .replace('<code>', '<code class="hljs">')
   }
 }
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -89,16 +91,7 @@ module.exports = {
         test: /\.md$/,
         loader: 'vue-markdown-loader',
         options: {
-          // markdown-it config
-          // preset: 'default',
-          breaks: true,
-          preprocess: function (MarkdownIt, source) {
-            MarkdownIt.renderer.rules.table_open = function () {
-              return '<table class="table">'
-            }
-            MarkdownIt.renderer.rules.fence = wrap(MarkdownIt.renderer.rules.fence)
-            return source
-          },
+          preventExtract: true,
           use: [
             [require('markdown-it-anchor'), {
               level: 2,
@@ -113,6 +106,7 @@ module.exports = {
 
               render: function (tokens, idx) {
                 var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
+
                 if (tokens[idx].nesting === 1) {
                   var description = (m && m.length > 1) ? m[1] : ''
                   var content = tokens[idx + 1].content
@@ -120,12 +114,8 @@ module.exports = {
                   var script = striptags.fetch(content, 'script')
                   var style = striptags.fetch(content, 'style')
                   var jsfiddle = { html: html, script: script, style: style }
-                  var descriptionHTML = description
-                    ? md.render(description)
-                    : ''
-
+                  var descriptionHTML = description ? md.render(description) : ''
                   jsfiddle = md.utils.escapeHtml(JSON.stringify(jsfiddle))
-
                   return `<demo-block class="demo-box" :jsfiddle="${jsfiddle}">
                             <div class="source" slot="source">${html}</div>
                             ${descriptionHTML}
@@ -135,7 +125,14 @@ module.exports = {
               }
             }],
             [require('markdown-it-container'), 'tip']
-          ]
+          ],
+          preprocess: function (MarkdownIt, source) {
+            MarkdownIt.renderer.rules.table_open = function () {
+              return '<table class="table">'
+            }
+            MarkdownIt.renderer.rules.fence = wrap(MarkdownIt.renderer.rules.fence)
+            return source
+          }
         }
       }
     ]

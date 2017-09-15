@@ -18,15 +18,20 @@
 <template>
   <div>
     <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-      <el-form-item label="用户名">
-        <el-input v-model="formLabelAlign.name" @blur="name"></el-input>
-      </el-form-item>
-      <el-form-item label="密码">
-        <el-input v-model="formLabelAlign.password" @blur="password"></el-input>
-      </el-form-item>
-      <el-form-item label="手机号">
-        <el-input v-model="formLabelAlign.mobile" @blur="mobile"></el-input>
-      </el-form-item>
+      <div style="width:400px">
+        <el-form-item label="用户名">
+          <el-input v-model="formLabelAlign.name" @blur="name"></el-input>
+          <span class="error">{{errorMsg.name}}</span>
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-input v-model="formLabelAlign.password" @blur="password"></el-input>
+          <span class="error">{{errorMsg.password}}</span>
+        </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="formLabelAlign.mobile" @blur="mobile"></el-input>
+          <span class="error">{{errorMsg.mobile}}</span>
+        </el-form-item>
+      </div>
     </el-form>
   </div>
 </template>
@@ -85,31 +90,46 @@ export default {
         name: '',
         password: '',
         mobile: ''
+      },
+      errorMsg: {
+        name: '',
+        password: '',
+        mobile: ''
       }
     }
   },
   methods: {
     name() {
-      let validator = new Validator()
-      validator.add(this.formLabelAlign.name, [{
+      this.blur('name', [{
         strategy: 'isNonEmpty',
         errorMsg: '用户名不能为空'
       }, {
         strategy: 'minLength:6',
         errorMsg: '用户名长度不能小于6 位'
-      }]);
-      // console.log(validator.start())
-      let errorMsg = validator.start()
-      console.log(errorMsg)
+      }])
     },
     password() {
-
+      this.blur('password', [{
+        strategy: 'isNonEmpty',
+        errorMsg: '密码不能为空'
+      }, {
+        strategy: 'minLength:6',
+        errorMsg: '密码长度不能小于6 位'
+      }])
     },
     mobile() {
-
+      this.blur('mobile', [{
+        strategy: 'isNonEmpty',
+        errorMsg: '手机号不能为空'
+      }, {
+        strategy: 'isMobile',
+        errorMsg: '请输入合法手机号'
+      }])
     },
-    blur() {
-
+    blur(obj, errorMsg) {
+      let validator = new Validator()
+      validator.add(this.formLabelAlign[obj], errorMsg);
+      this.errorMsg[obj] = validator.start()
     }
   },
   mounted() {
@@ -130,6 +150,10 @@ export default {
   padding: 10px 15px;
   border-radius: 4px;
 }
+
+.error {
+  color: #f00;
+}
 </style>
 ```
 :::
@@ -141,3 +165,124 @@ export default {
 在vue中 如`@click`的事件，当一个 ViewModel 被销毁时，所有的事件处理器都会自动被删除。你无须担心如何自己清理它们。
 
 ***当我们需要自己绑定事件时就得避免事件重复绑定，以及及时移除不必要的事件。非特殊情况，推荐使用vue事件绑定***
+
+<script>
+/** *********************策略对象**************************/
+const strategies = {
+  isNonEmpty: function(value, errorMsg) {
+    if (value === '') {
+      return errorMsg
+    }
+  },
+  minLength: function(value, length, errorMsg) {
+    if (value.length < length) {
+      return errorMsg
+    }
+  },
+  isMobile: function(value, errorMsg) {
+    if (!/(^1[3|5|8][0-9]{9}$)/.test(value)) {
+      return errorMsg
+    }
+  }
+}
+/***********************Validator 类**************************/
+class Validator {
+  constructor() {
+    this.cache = []
+  }
+  add(value, rules) {
+    let _this = this
+    rules.forEach((rule) => {
+      let strategyAry = rule.strategy.split(':')
+      let errorMsg = rule.errorMsg
+      _this.cache.push(function() {
+        let strategy = strategyAry.shift()
+        strategyAry.unshift(value)
+        strategyAry.push(errorMsg)
+        return strategies[strategy].apply(this, strategyAry)
+      })
+    })
+  }
+  start() {
+    for (var i = 0, validatorFunc; validatorFunc = this.cache[i++];) {
+      var errorMsg = validatorFunc()
+      if (errorMsg) {
+        return errorMsg
+      }
+    }
+  }
+}
+
+export default {
+  data() {
+    return {
+      labelPosition: 'right',
+      formLabelAlign: {
+        name: '',
+        password: '',
+        mobile: ''
+      },
+      errorMsg: {
+        name: '',
+        password: '',
+        mobile: ''
+      }
+    }
+  },
+  methods: {
+    name() {
+      this.blur('name', [{
+        strategy: 'isNonEmpty',
+        errorMsg: '用户名不能为空'
+      }, {
+        strategy: 'minLength:6',
+        errorMsg: '用户名长度不能小于6 位'
+      }])
+    },
+    password() {
+      this.blur('password', [{
+        strategy: 'isNonEmpty',
+        errorMsg: '密码不能为空'
+      }, {
+        strategy: 'minLength:6',
+        errorMsg: '密码长度不能小于6 位'
+      }])
+    },
+    mobile() {
+      this.blur('mobile', [{
+        strategy: 'isNonEmpty',
+        errorMsg: '手机号不能为空'
+      }, {
+        strategy: 'isMobile',
+        errorMsg: '请输入合法手机号'
+      }])
+    },
+    blur(obj, errorMsg) {
+      let validator = new Validator()
+      validator.add(this.formLabelAlign[obj], errorMsg);
+      this.errorMsg[obj] = validator.start()
+    }
+  },
+  mounted() {
+
+  }
+}
+</script>
+<style>
+.btn {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #c4c4c4;
+  color: #1f2d3d;
+  margin: 0;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.error {
+  color: #f00;
+}
+</style>

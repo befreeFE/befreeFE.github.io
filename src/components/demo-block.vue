@@ -88,6 +88,7 @@
     pre {
       margin: 0;
       padding: 24px;
+      overflow: auto;
     }
 
     code[class^=language] {
@@ -160,9 +161,7 @@ export default {
 
   props: {
     jsfiddle: Object,
-    default () {
-      return {}
-    }
+    extends: Object
   },
 
   methods: {
@@ -215,7 +214,7 @@ export default {
     },
 
     blockClass () {
-      return `demo-${this.lang} demo-${this.$router.currentRoute.path.split('/').pop()}`
+      return `demo-${this.$router.currentRoute.path.split('/').pop()}`
     },
 
     iconClass () {

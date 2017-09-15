@@ -115,7 +115,7 @@ table.table {
 }
 
  ::-webkit-scrollbar-thumb {
-  background: #324157;
+  background: #c5c5c5;
   border-radius: 10px;
   border: whiteSmoke solid 3px;
 }
@@ -124,6 +124,53 @@ hr {
   border: solid 1px #eaeefb;
   margin: 30px 0;
   height: 0;
+}
+.container,
+.page-container {
+  width: 1140px;
+  display: flex;
+  padding: 0 30px;
+  margin: 20px auto 0;
+  .tip {
+    padding: 8px 16px;
+    margin: 20px 0;
+    background-color: #ECF8FF;
+    border-radius: 4px;
+    border-left: #50bfff 5px solid;
+
+    code {
+      background-color: rgba(#fff, .7);
+      color: #445368;
+    }
+  }
+}
+
+.page-content {
+  flex: 1;
+}
+
+.page-container p {
+  font-size: 14px;
+  color: #5e6d82;
+  line-height: 1.5em;
+}
+
+.page-container h2,
+.page-container h3,
+.page-container h4,
+.page-container h5 {
+  font-weight: 400;
+  color: #1f2f3d;
+}
+
+.page-container h2 a,
+.page-container h3 a,
+.page-container h4 a,
+.page-container h5 a {
+  float: left;
+  margin-left: -20px;
+  opacity: 0;
+  cursor: pointer;
 }
 </style>
 <script>

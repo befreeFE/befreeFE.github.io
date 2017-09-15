@@ -106,3 +106,60 @@ export default {
 在vue中 如`@click`的事件，当一个 ViewModel 被销毁时，所有的事件处理器都会自动被删除。你无须担心如何自己清理它们。
 
 ***当我们需要自己绑定事件时就得避免事件重复绑定，以及及时移除不必要的事件。非特殊情况，推荐使用vue事件绑定***
+
+<script>
+export default {
+  data() {
+    return {
+      num: 0,
+      bindNum: 0,
+      num2: 0,
+      bindNum2: 0,
+      single: null
+    }
+  },
+  methods: {
+    toSingle(fn) {
+      let result
+      return result || (result = fn.apply(this, arguments))
+    },
+    bindEvent() {
+      this.$refs.btn.addEventListener('click', () => {
+        this.num++
+      })
+    },
+    bind() {
+      this.bindNum++
+      this.bindEvent();
+    },
+    bind2() {
+      this.bindNum2++
+      if (typeof this.single === 'function') {
+        this.single()
+      }
+    }
+  },
+  mounted() {
+    this.single = this.toSingle(() => {
+      this.$refs.btn2.addEventListener('click', () => {
+        this.num2++
+      })
+      return true
+    })
+  }
+}
+</script>
+<style>
+.btn {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #c4c4c4;
+  color: #1f2d3d;
+  margin: 0;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+</style>
