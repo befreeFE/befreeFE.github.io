@@ -2,6 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var hljs = require('highlight.js')
 var md = require('markdown-it')()
 var striptags = require('./strip-tags')
 var slugify = require('transliteration').slugify
@@ -10,14 +11,6 @@ function convert (str) {
     return String.fromCharCode(parseInt(encodeURIComponent($0).replace(/(%26%23x)(\w{4})(%3B)/g, '$2'), 16))
   })
   return str
-}
-
-var wrap = function (render) {
-  return function () {
-    return render.apply(this, arguments)
-      .replace('<code class="', '<code class="hljs ')
-      .replace('<code>', '<code class="hljs">')
-  }
 }
 
 function resolve (dir) {
@@ -91,7 +84,20 @@ module.exports = {
         test: /\.md$/,
         loader: 'vue-markdown-loader',
         options: {
+          preset: 'default',
+          breaks: true,
           preventExtract: true,
+          highlight: function (str, lang) {
+            if (lang && hljs.getLanguage(lang)) {
+              try {
+                return '<pre><code class="hljs">' +
+                       hljs.highlight(lang, str, true).value +
+                       '</code></pre>'
+              } catch (__) {}
+            }
+
+            return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>'
+          },
           use: [
             [require('markdown-it-anchor'), {
               level: 2,
@@ -125,14 +131,7 @@ module.exports = {
               }
             }],
             [require('markdown-it-container'), 'tip']
-          ],
-          preprocess: function (MarkdownIt, source) {
-            MarkdownIt.renderer.rules.table_open = function () {
-              return '<table class="table">'
-            }
-            MarkdownIt.renderer.rules.fence = wrap(MarkdownIt.renderer.rules.fence)
-            return source
-          }
+          ]
         }
       }
     ]
