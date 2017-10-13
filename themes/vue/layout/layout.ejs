@@ -48,6 +48,9 @@
       <a class="logo" href="/"></a>
     </div>
     <%- partial('partials/header') %>
+    <% if (isIndex) { %>
+    <%- partial('partials/content') %>
+    <% } %>
     <% if (!isIndex) { %>
       <div id="main" class="fix-sidebar">
         <% if (page.blog_index) { %>
