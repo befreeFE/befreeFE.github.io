@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>Firebase + 验证 — 阅读寻知</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "examples"</script>
+    <style>
+      /*默认滚动条样式修改*/
+     ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+     ::-webkit-scrollbar-track {
+      background: whiteSmoke;
+      -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+     ::-webkit-scrollbar-thumb {
+      background: #42b983;
+      border-radius: 10px;
+      border: whiteSmoke solid 3px;
+    }
+
+     ::-webkit-scrollbar-thumb:hover {
+      background: #b5b5b5;
+    }
+    </style>
+  </head>
+  <body class="docs">
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/" style="display:flex;align-items:center">
+    <img src="/images/logo.png" style="width:35px;height:35px">
+    <span style="font-size: 1em;margin-left: 6px">阅读寻知</span>
+  </a>
+  <ul id="nav">
+    <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link current">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link current">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link current">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+  </ul>
+</div>
+
+    
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link current">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link current">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link current">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+    </ul>
+    <div class="list">
+      <ul class="menu-root">
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/index.html" class="sidebar-link">Markdown 编辑器</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/commits.html" class="sidebar-link">GitHub 提交</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/grid-component.html" class="sidebar-link">网格组件</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/tree-view.html" class="sidebar-link">树形视图</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/svg.html" class="sidebar-link">SVG 图表</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/modal.html" class="sidebar-link">模式组件</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/elastic-header.html" class="sidebar-link">具有伸缩性的 Header</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/select2.html" class="sidebar-link">内嵌组件</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/deepstream.html" class="sidebar-link">实时 deepstreamHub</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/firebase.html" class="sidebar-link current">Firebase + 验证</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/todomvc.html" class="sidebar-link">TodoMVC</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/hackernews.html" class="sidebar-link">HackerNews 克隆</a>
+        </li>
+    
+</ul>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="content examples with-sidebar ">
+  
+    
+      
+    
+  
+  
+    <h1>Firebase + 验证 Example</h1>
+  
+  
+  <blockquote>
+<p>本示例使用 <a href="https://firebase.google.com/" target="_blank" rel="external">Firebase</a> 作为数据存储后端，同时在客户端进行数据实时同步 (你可以在多个浏览器窗口去打开它来验证)。另外，它通过计算属性实时验证，并且添加／移除选项时触发 CSS 过渡。</p>
+<iframe width="100%" height="500" src="https://jsfiddle.net/chrisvfritz/pyLbpzzx/embedded/result,html,js,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+</blockquote>
+
+  
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/search.css">
+    <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+      appId: 'RIQDWWF2ZM',
+      apiKey: '894420bd3782877df9cf7bd89e21d283',
+      indexName: 'hexo',
+      inputSelector: selector,
+      })
+    })
+    </script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
+    <script>
+      const search = instantsearch({
+        appId: 'RIQDWWF2ZM',
+        apiKey: '894420bd3782877df9cf7bd89e21d283',
+        indexName: 'hexo'
+      });
+      search.addWidget(
+        instantsearch.widgets.hits({
+          container: '#hits',
+          templates: {
+            empty: 'No results',
+            item: '<a href="{{permalink}}" class="search-item"><span>{{title}}</span></a>'
+          }
+        })
+      );
+      search.addWidget(
+        instantsearch.widgets.searchBox({
+          container: '#search-query',
+          placeholder: ''
+        })
+      );
+      search.start();
+    </script> -->
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+
+  </body>
+</html>

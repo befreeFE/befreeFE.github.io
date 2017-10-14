@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>阅读寻知</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = ""</script>
+    <style>
+      /*默认滚动条样式修改*/
+     ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+     ::-webkit-scrollbar-track {
+      background: whiteSmoke;
+      -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+     ::-webkit-scrollbar-thumb {
+      background: #42b983;
+      border-radius: 10px;
+      border: whiteSmoke solid 3px;
+    }
+
+     ::-webkit-scrollbar-thumb:hover {
+      background: #b5b5b5;
+    }
+    </style>
+  </head>
+  <body class="docs">
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/" style="display:flex;align-items:center">
+    <img src="/images/logo.png" style="width:35px;height:35px">
+    <span style="font-size: 1em;margin-left: 6px">阅读寻知</span>
+  </a>
+  <ul id="nav">
+    <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link current">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+  </ul>
+</div>
+
+    
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+    <ul class="main-menu">
+      <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link current">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+    </ul>
+  </div>
+
+<div class="content  ">
+  
+  
+  
+  <h1 id="You-Don’t-Know-JS-ES6-amp-Beyond"><a href="#You-Don’t-Know-JS-ES6-amp-Beyond" class="headerlink" title="You Don’t Know JS: ES6 &amp; Beyond"></a>You Don’t Know JS: ES6 &amp; Beyond</h1><h1 id="Chapter-4-Async-Flow-Control"><a href="#Chapter-4-Async-Flow-Control" class="headerlink" title="Chapter 4: Async Flow Control"></a>Chapter 4: Async Flow Control</h1><p>It’s no secret if you’ve written any significant amount of JavaScript that asynchronous programming is a required skill. The primary mechanism for managing asynchrony has been the function callback.</p>
+<p>However, ES6 adds a new feature that helps address significant shortcomings in the callbacks-only approach to async: <em>Promises</em>. In addition, we can revisit generators (from the previous chapter) and see a pattern for combining the two that’s a major step forward in async flow control programming in JavaScript.</p>
+<h2 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h2><p>Let’s clear up some misconceptions: Promises are not about replacing callbacks. Promises provide a trustable intermediary – that is, between your calling code and the async code that will perform the task – to manage callbacks.</p>
+<p>Another way of thinking about a Promise is as an event listener, on which you can register to listen for an event that lets you know when a task has completed. It’s an event that will only ever fire once, but it can be thought of as an event nonetheless.</p>
+<p>Promises can be chained together, which can sequence a series of asychronously completing steps. Together with higher-level abstractions like the <code>all(..)</code> method (in classic terms, a “gate”) and the <code>race(..)</code> method (in classic terms, a “latch”), promise chains provide a mechanism for async flow control.</p>
+<p>Yet another way of conceptualizing a Promise is that it’s a <em>future value</em>, a time-independent container wrapped around a value. This container can be reasoned about identically whether the underlying value is final or not. Observing the resolution of a Promise extracts this value once available. In other words, a Promise is said to be the async version of a sync function’s return value.</p>
+<p>A Promise can only have one of two possible resolution outcomes: fulfilled or rejected, with an optional single value. If a Promise is fulfilled, the final value is called a fulfillment. If it’s rejected, the final value is called a reason (as in, a “reason for rejection”). Promises can only be resolved (fulfillment or rejection) <em>once</em>. Any further attempts to fulfill or reject are simply ignored. Thus, once a Promise is resolved, it’s an immutable value that cannot be changed.</p>
+<p>Clearly, there are several different ways to think about what a Promise is. No single perspective is fully sufficient, but each provides a separate aspect of the whole. The big takeaway is that they offer a significant improvement over callbacks-only async, namely that they provide order, predictability, and trustability.</p>
+<h3 id="Making-and-Using-Promises"><a href="#Making-and-Using-Promises" class="headerlink" title="Making and Using Promises"></a>Making and Using Promises</h3><p>To construct a promise instance, use the <code>Promise(..)</code> constructor:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span> <span class="title">pr</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">	<span class="comment">// ..</span></div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p>The <code>Promise(..)</code> constructor takes a single function (<code>pr(..)</code>), which is called immediately and receives two control functions as arguments, usually named <code>resolve(..)</code> and <code>reject(..)</code>. They are used as:</p>
+<ul>
+<li>If you call <code>reject(..)</code>, the promise is rejected, and if any value is passed to <code>reject(..)</code>, it is set as the reason for rejection.</li>
+<li>If you call <code>resolve(..)</code> with no value, or any non-promise value, the promise is fulfilled.</li>
+<li>If you call <code>resolve(..)</code> and pass another promise, this promise simply adopts the state – whether immediate or eventual – of the passed promise (either fulfillment or rejection).</li>
+</ul>
+<p>Here’s how you’d typically use a promise to refactor a callback-reliant function call. If you start out with an <code>ajax(..)</code> utility that expects to be able to call an error-first style callback:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url,cb</span>) </span>&#123;</div><div class="line">	<span class="comment">// make request, eventually call `cb(..)`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// ..</span></div><div class="line"></div><div class="line">ajax( <span class="string">"http://some.url.1"</span>, <span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params">err,contents</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span> (err) &#123;</div><div class="line">		<span class="comment">// handle ajax error</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> &#123;</div><div class="line">		<span class="comment">// handle `contents` success</span></div><div class="line">	&#125;</div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p>You can convert it to:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span> <span class="title">pr</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">		<span class="comment">// make request, eventually call</span></div><div class="line">		<span class="comment">// either `resolve(..)` or `reject(..)`</span></div><div class="line">	&#125; );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// ..</span></div><div class="line"></div><div class="line">ajax( <span class="string">"http://some.url.1"</span> )</div><div class="line">.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">contents</span>)</span>&#123;</div><div class="line">		<span class="comment">// handle `contents` success</span></div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>)</span>&#123;</div><div class="line">		<span class="comment">// handle ajax error reason</span></div><div class="line">	&#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>Promises have a <code>then(..)</code> method that accepts one or two callback functions. The first function (if present) is treated as the handler to call if the promise is fulfilled successfully. The second function (if present) is treated as the handler to call if the promise is rejected explicitly, or if any error/exception is caught during resolution.</p>
+<p>If one of the arguments is omitted or otherwise not a valid function – typically you’ll use <code>null</code> instead – a default placeholder equivalent is used. The default success callback passes its fulfillment value along and the default error callback propagates its rejection reason along.</p>
+<p>The shorthand for calling <code>then(null,handleRejection)</code> is <code>catch(handleRejection)</code>.</p>
+<p>Both <code>then(..)</code> and <code>catch(..)</code> automatically construct and return another promise instance, which is wired to receive the resolution from whatever the return value is from the original promise’s fulfillment or rejection handler (whichever is actually called). Consider:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">ajax( <span class="string">"http://some.url.1"</span> )</div><div class="line">.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">contents</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> contents.toUpperCase();</div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"DEFAULT VALUE"</span>;</div><div class="line">	&#125;</div><div class="line">)</div><div class="line">.then( <span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">	<span class="comment">// handle data from original promise's</span></div><div class="line">	<span class="comment">// handlers</span></div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p>In this snippet, we’re returning an immediate value from either <code>fulfilled(..)</code> or <code>rejected(..)</code>, which then is received on the next event turn in the second <code>then(..)</code>‘s <code>fulfilled(..)</code>. If we instead return a new promise, that new promise is subsumed and adopted as the resolution:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">ajax( <span class="string">"http://some.url.1"</span> )</div><div class="line">.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">contents</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> ajax(</div><div class="line">			<span class="string">"http://some.url.2?v="</span> + contents</div><div class="line">		);</div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> ajax(</div><div class="line">			<span class="string">"http://backup.url.3?err="</span> + reason</div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">)</div><div class="line">.then( <span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">contents</span>)</span>&#123;</div><div class="line">	<span class="comment">// `contents` comes from the subsequent</span></div><div class="line">	<span class="comment">// `ajax(..)` call, whichever it was</span></div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p>It’s important to note that an exception (or rejected promise) in the first <code>fulfilled(..)</code> will <em>not</em> result in the first <code>rejected(..)</code> being called, as that handler only responds to the resolution of the first original promise. Instead, the second promise, which the second <code>then(..)</code> is called against, receives that rejection.</p>
+<p>In this previous snippet, we are not listening for that rejection, which means it will be silently held onto for future observation. If you never observe it by calling a <code>then(..)</code> or <code>catch(..)</code>, then it will go unhandled. Some browser developer consoles may detect these unhandled rejections and report them, but this is not reliably guaranteed; you should always observe promise rejections.</p>
+<p><strong>Note:</strong> This was just a brief overview of Promise theory and behavior. For a much more in-depth exploration, see Chapter 3 of the <em>Async &amp; Performance</em> title of this series.</p>
+<h3 id="Thenables"><a href="#Thenables" class="headerlink" title="Thenables"></a>Thenables</h3><p>Promises are genuine instances of the <code>Promise(..)</code> constructor. However, there are promise-like objects called <em>thenables</em> that generally can interoperate with the Promise mechanisms.</p>
+<p>Any object (or function) with a <code>then(..)</code> function on it is assumed to be a thenable. Any place where the Promise mechanisms can accept and adopt the state of a genuine promise, they can also handle a thenable.</p>
+<p>Thenables are basically a general label for any promise-like value that may have been created by some other system than the actual <code>Promise(..)</code> constructor. In that perspective, a thenable is generally less trustable than a genuine Promise. Consider this misbehaving thenable, for example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> th = &#123;</div><div class="line">	then: <span class="function"><span class="keyword">function</span> <span class="title">thener</span>(<span class="params"> fulfilled </span>) </span>&#123;</div><div class="line">		<span class="comment">// call `fulfilled(..)` once every 100ms forever</span></div><div class="line">		setInterval( fulfilled, <span class="number">100</span> );</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>If you received that thenable and chained it with <code>th.then(..)</code>, you’d likely be surprised that your fulfillment handler is called repeatedly, when normal Promises are supposed to only ever be resolved once.</p>
+<p>Generally, if you’re receiving what purports to be a promise or thenable back from some other system, you shouldn’t just trust it blindly. In the next section, we’ll see a utility included with ES6 Promises that helps address this trust concern.</p>
+<p>But to further understand the perils of this issue, consider that <em>any</em> object in <em>any</em> piece of code that’s ever been defined to have a method on it called <code>then(..)</code> can be potentially confused as a thenable – if used with Promises, of course – regardless of if that thing was ever intended to even remotely be related to Promise-style async coding.</p>
+<p>Prior to ES6, there was never any special reservation made on methods called <code>then(..)</code>, and as you can imagine there’s been at least a few cases where that method name has been chosen prior to Promises ever showing up on the radar screen. The most likely case of mistaken thenable will be async libraries that use <code>then(..)</code> but which are not strictly Promises-compliant – there are several out in the wild.</p>
+<p>The onus will be on you to guard against directly using values with the Promise mechanism that would be incorrectly assumed to be a thenable.</p>
+<h3 id="Promise-API"><a href="#Promise-API" class="headerlink" title="Promise API"></a><code>Promise</code> API</h3><p>The <code>Promise</code> API also provides some static methods for working with Promises.</p>
+<p><code>Promise.resolve(..)</code> creates a promise resolved to the value passed in. Let’s compare how it works to the more manual approach:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">Promise</span>.resolve( <span class="number">42</span> );</div><div class="line"></div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span> <span class="title">pr</span>(<span class="params">resolve</span>)</span>&#123;</div><div class="line">	resolve( <span class="number">42</span> );</div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p><code>p1</code> and <code>p2</code> will have essentially identical behavior. The same goes for resolving with a promise:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> theP = ajax( .. );</div><div class="line"></div><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">Promise</span>.resolve( theP );</div><div class="line"></div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span> <span class="title">pr</span>(<span class="params">resolve</span>)</span>&#123;</div><div class="line">	resolve( theP );</div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p><strong>Tip:</strong> <code>Promise.resolve(..)</code> is the solution to the thenable trust issue raised in the previous section. Any value that you are not already certain is a trustable promise – even if it could be an immediate value – can be normalized by passing it to <code>Promise.resolve(..)</code>. If the value is already a recognizable promise or thenable, its state/resolution will simply be adopted, insulating you from misbehavior. If it’s instead an immediate value, it will be “wrapped” in a genuine promise, thereby normalizing its behavior to be async.</p>
+<p><code>Promise.reject(..)</code> creates an immediately rejected promise, the same as its <code>Promise(..)</code> constructor counterpart:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">Promise</span>.reject( <span class="string">"Oops"</span> );</div><div class="line"></div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span> <span class="title">pr</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">	reject( <span class="string">"Oops"</span> );</div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p>While <code>resolve(..)</code> and <code>Promise.resolve(..)</code> can accept a promise and adopt its state/resolution, <code>reject(..)</code> and <code>Promise.reject(..)</code> do not differentiate what value they receive. So, if you reject with a promise or thenable, the promise/thenable itself will be set as the rejection reason, not its underlying value.</p>
+<p><code>Promise.all([ .. ])</code> accepts an array of one or more values (e.g., immediate values, promises, thenables). It returns a promise back that will be fulfilled if all the values fulfill, or reject immediately once the first of any of them rejects.</p>
+<p>Starting with these values/promises:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">Promise</span>.resolve( <span class="number">42</span> );</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span> <span class="title">pr</span>(<span class="params">resolve</span>)</span>&#123;</div><div class="line">	setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		resolve( <span class="number">43</span> );</div><div class="line">	&#125;, <span class="number">100</span> );</div><div class="line">&#125; );</div><div class="line"><span class="keyword">var</span> v3 = <span class="number">44</span>;</div><div class="line"><span class="keyword">var</span> p4 = <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span> <span class="title">pr</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">	setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		reject( <span class="string">"Oops"</span> );</div><div class="line">	&#125;, <span class="number">10</span> );</div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p>Let’s consider how <code>Promise.all([ .. ])</code> works with combinations of those values:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.all( [p1,p2,v3] )</div><div class="line">.then( <span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">vals</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( vals );			<span class="comment">// [42,43,44]</span></div><div class="line">&#125; );</div><div class="line"></div><div class="line"><span class="built_in">Promise</span>.all( [p1,p2,v3,p4] )</div><div class="line">.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">vals</span>)</span>&#123;</div><div class="line">		<span class="comment">// never gets here</span></div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( reason );		<span class="comment">// Oops</span></div><div class="line">	&#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>While <code>Promise.all([ .. ])</code> waits for all fulfillments (or the first rejection), <code>Promise.race([ .. ])</code> waits only for either the first fulfillment or rejection. Consider:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// <span class="doctag">NOTE:</span> re-setup all test values to</span></div><div class="line"><span class="comment">// avoid timing issues misleading you!</span></div><div class="line"></div><div class="line"><span class="built_in">Promise</span>.race( [p2,p1,v3] )</div><div class="line">.then( <span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( val );				<span class="comment">// 42</span></div><div class="line">&#125; );</div><div class="line"></div><div class="line"><span class="built_in">Promise</span>.race( [p2,p4] )</div><div class="line">.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">		<span class="comment">// never gets here</span></div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( reason );		<span class="comment">// Oops</span></div><div class="line">	&#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p><strong>Warning:</strong> While <code>Promise.all([])</code> will fulfill right away (with no values), <code>Promise.race([])</code> will hang forever. This is a strange inconsistency, and speaks to the suggestion that you should never use these methods with empty arrays.</p>
+<h2 id="Generators-Promises"><a href="#Generators-Promises" class="headerlink" title="Generators + Promises"></a>Generators + Promises</h2><p>It <em>is</em> possible to express a series of promises in a chain to represent the async flow control of your program. Consider:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">step1()</div><div class="line">.then(</div><div class="line">	step2,</div><div class="line">	step1Failed</div><div class="line">)</div><div class="line">.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">step3</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="built_in">Promise</span>.all( [</div><div class="line">			step3a( msg ),</div><div class="line">			step3b( msg ),</div><div class="line">			step3c( msg )</div><div class="line">		] )</div><div class="line">	&#125;</div><div class="line">)</div><div class="line">.then(step4);</div></pre></td></tr></table></figure>
+<p>However, there’s a much better option for expressing async flow control, and it will probably be much more preferable in terms of coding style than long promise chains. We can use what we learned in Chapter 3 about generators to express our async flow control.</p>
+<p>The important pattern to recognize: a generator can yield a promise, and that promise can then be wired to resume the generator with its fulfillment value.</p>
+<p>Consider the previous snippet’s async flow control expressed with a generator:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">main</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="keyword">var</span> ret = <span class="keyword">yield</span> step1();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">catch</span> (err) &#123;</div><div class="line">		ret = <span class="keyword">yield</span> step1Failed( err );</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	ret = <span class="keyword">yield</span> step2( ret );</div><div class="line"></div><div class="line">	<span class="comment">// step 3</span></div><div class="line">	ret = <span class="keyword">yield</span> <span class="built_in">Promise</span>.all( [</div><div class="line">		step3a( ret ),</div><div class="line">		step3b( ret ),</div><div class="line">		step3c( ret )</div><div class="line">	] );</div><div class="line"></div><div class="line">	<span class="keyword">yield</span> step4( ret );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>On the surface, this snippet may seem more verbose than the promise chain equivalent in the earlier snippet. However, it offers a much more attractive – and more importantly, a more understandable and reason-able – synchronous-looking coding style (with <code>=</code> assignment of “return” values, etc.) That’s especially true in that <code>try..catch</code> error handling can be used across those hidden async boundaries.</p>
+<p>Why are we using Promises with the generator? It’s certainly possible to do async generator coding without Promises.</p>
+<p>Promises are a trustable system that uninverts the inversion of control of normal callbacks or thunks (see the <em>Async &amp; Performance</em> title of this series). So, combining the trustability of Promises and the synchronicity of code in generators effectively addresses all the major deficiencies of callbacks. Also, utilities like <code>Promise.all([ .. ])</code> are a nice, clean way to express concurrency at a generator’s single <code>yield</code> step.</p>
+<p>So how does this magic work? We’re going to need a <em>runner</em> that can run our generator, receive a <code>yield</code>ed promise, and wire it up to resume the generator with either the fulfillment success value, or throw an error into the generator with the rejection reason.</p>
+<p>Many async-capable utilities/libraries have such a “runner”; for example, <code>Q.spawn(..)</code> and my asynquence’s <code>runner(..)</code> plug-in. But here’s a stand-alone runner to illustrate how the process works:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params">gen</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> args = [].slice.call( <span class="built_in">arguments</span>, <span class="number">1</span>), it;</div><div class="line"></div><div class="line">	it = gen.apply( <span class="keyword">this</span>, args );</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="built_in">Promise</span>.resolve()</div><div class="line">		.then( <span class="function"><span class="keyword">function</span> <span class="title">handleNext</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">			<span class="keyword">var</span> next = it.next( value );</div><div class="line"></div><div class="line">			<span class="keyword">return</span> (<span class="function"><span class="keyword">function</span> <span class="title">handleResult</span>(<span class="params">next</span>)</span>&#123;</div><div class="line">				<span class="keyword">if</span> (next.done) &#123;</div><div class="line">					<span class="keyword">return</span> next.value;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span> &#123;</div><div class="line">					<span class="keyword">return</span> <span class="built_in">Promise</span>.resolve( next.value )</div><div class="line">						.then(</div><div class="line">							handleNext,</div><div class="line">							<span class="function"><span class="keyword">function</span> <span class="title">handleErr</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">								<span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(</div><div class="line">									it.throw( err )</div><div class="line">								)</div><div class="line">								.then( handleResult );</div><div class="line">							&#125;</div><div class="line">						);</div><div class="line">				&#125;</div><div class="line">			&#125;)( next );</div><div class="line">		&#125; );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong> For a more prolifically commented version of this utility, see the <em>Async &amp; Performance</em> title of this series. Also, the run utilities provided with various async libraries are often more powerful/capable than what we’ve shown here. For example, asynquence’s <code>runner(..)</code> can handle <code>yield</code>ed promises, sequences, thunks, and immediate (non-promise) values, giving you ultimate flexibility.</p>
+<p>So now running <code>*main()</code> as listed in the earlier snippet is as easy as:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">run( main )</div><div class="line">.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// `*main()` completed successfully</span></div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>)</span>&#123;</div><div class="line">		<span class="comment">// Oops, something went wrong</span></div><div class="line">	&#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>Essentially, anywhere that you have more than two asynchronous steps of flow control logic in your program, you can <em>and should</em> use a promise-yielding generator driven by a run utility to express the flow control in a synchronous fashion. This will make for much easier to understand and maintain code.</p>
+<p>This yield-a-promise-resume-the-generator pattern is going to be so common and so powerful, the next version of JavaScript after ES6 is almost certainly going to introduce a new function type that will do it automatically without needing the run utility. We’ll cover <code>async function</code>s (as they’re expected to be called) in Chapter 8.</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>As JavaScript continues to mature and grow in its widespread adoption, asynchronous programming is more and more of a central concern. Callbacks are not fully sufficient for these tasks, and totally fall down the more sophisticated the need.</p>
+<p>Thankfully, ES6 adds Promises to address one of the major shortcomings of callbacks: lack of trust in predictable behavior. Promises represent the future completion value from a potentially async task, normalizing behavior across sync and async boundaries.</p>
+<p>But it’s the combination of Promises with generators that fully realizes the benefits of rearranging our async flow control code to de-emphasize and abstract away that ugly callback soup (aka “hell”).</p>
+<p>Right now, we can manage these interactions with the aide of various async libraries’ runners, but JavaScript is eventually going to support this interaction pattern with dedicated syntax alone!</p>
+
+  
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/search.css">
+    <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+      appId: 'RIQDWWF2ZM',
+      apiKey: '894420bd3782877df9cf7bd89e21d283',
+      indexName: 'hexo',
+      inputSelector: selector,
+      })
+    })
+    </script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
+    <script>
+      const search = instantsearch({
+        appId: 'RIQDWWF2ZM',
+        apiKey: '894420bd3782877df9cf7bd89e21d283',
+        indexName: 'hexo'
+      });
+      search.addWidget(
+        instantsearch.widgets.hits({
+          container: '#hits',
+          templates: {
+            empty: 'No results',
+            item: '<a href="{{permalink}}" class="search-item"><span>{{title}}</span></a>'
+          }
+        })
+      );
+      search.addWidget(
+        instantsearch.widgets.searchBox({
+          container: '#search-query',
+          placeholder: ''
+        })
+      );
+      search.start();
+    </script> -->
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+
+  </body>
+</html>

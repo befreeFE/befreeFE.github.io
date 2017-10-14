@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>阅读寻知</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = ""</script>
+    <style>
+      /*默认滚动条样式修改*/
+     ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+     ::-webkit-scrollbar-track {
+      background: whiteSmoke;
+      -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+     ::-webkit-scrollbar-thumb {
+      background: #42b983;
+      border-radius: 10px;
+      border: whiteSmoke solid 3px;
+    }
+
+     ::-webkit-scrollbar-thumb:hover {
+      background: #b5b5b5;
+    }
+    </style>
+  </head>
+  <body class="docs">
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/" style="display:flex;align-items:center">
+    <img src="/images/logo.png" style="width:35px;height:35px">
+    <span style="font-size: 1em;margin-left: 6px">阅读寻知</span>
+  </a>
+  <ul id="nav">
+    <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link current">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+  </ul>
+</div>
+
+    
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+    <ul class="main-menu">
+      <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link current">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+    </ul>
+  </div>
+
+<div class="content  ">
+  
+  
+  
+  <h1 id="You-Don’t-Know-JS-ES6-amp-Beyond"><a href="#You-Don’t-Know-JS-ES6-amp-Beyond" class="headerlink" title="You Don’t Know JS: ES6 &amp; Beyond"></a>You Don’t Know JS: ES6 &amp; Beyond</h1><h1 id="Chapter-8-Beyond-ES6"><a href="#Chapter-8-Beyond-ES6" class="headerlink" title="Chapter 8: Beyond ES6"></a>Chapter 8: Beyond ES6</h1><p>At the time of this writing, the final draft of ES6 (<em>ECMAScript 2015</em>) is shortly headed toward its final official vote of approval by ECMA. But even as ES6 is being finalized, the TC39 committee is already hard at work on features for ES7/2016 and beyond.</p>
+<p>As we discussed in Chapter 1, it’s expected that the cadence of progress for JS is going to accelerate from updating once every several years to having an official version update once per year (hence the year-based naming). That alone is going to radically change how JS developers learn about and keep up with the language.</p>
+<p>But even more importantly, the committee is actually going to work feature by feature. As soon as a feature is spec-complete and has its kinks worked out through implementation experiments in a few browsers, that feature will be considered stable enough to start using. We’re all strongly encouraged to adopt features once they’re ready instead of waiting for some official standards vote. If you haven’t already learned ES6, the time is <em>past due</em> to get on board!</p>
+<p>As the time of this writing, a list of future proposals and their status can be seen here (<a href="https://github.com/tc39/ecma262#current-proposals" target="_blank" rel="external">https://github.com/tc39/ecma262#current-proposals</a>).</p>
+<p>Transpilers and polyfills are how we’ll bridge to these new features even before all browsers we support have implemented them. Babel, Traceur, and several other major transpilers already have support for some of the post-ES6 features that are most likely to stabilize.</p>
+<p>With that in mind, it’s already time for us to look at some of them. Let’s jump in!</p>
+<p><strong>Warning:</strong> These features are all in various stages of development. While they’re likely to land, and probably will look similar, take the contents of this chapter with more than a few grains of salt. This chapter will evolve in future editions of this title as these (and other!) features finalize.</p>
+<h2 id="async-functions"><a href="#async-functions" class="headerlink" title="async functions"></a><code>async function</code>s</h2><p>In “Generators + Promises” in Chapter 4, we mentioned that there’s a proposal for direct syntactic support for the pattern of generators <code>yield</code>ing promises to a runner-like utility that will resume it on promise completion. Let’s take a brief look at that proposed feature, called <code>async function</code>.</p>
+<p>Recall this generator example from Chapter 4:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">run( <span class="function"><span class="keyword">function</span> *<span class="title">main</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> ret = <span class="keyword">yield</span> step1();</div><div class="line"></div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		ret = <span class="keyword">yield</span> step2( ret );</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">catch</span> (err) &#123;</div><div class="line">		ret = <span class="keyword">yield</span> step2Failed( err );</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	ret = <span class="keyword">yield</span> <span class="built_in">Promise</span>.all([</div><div class="line">		step3a( ret ),</div><div class="line">		step3b( ret ),</div><div class="line">		step3c( ret )</div><div class="line">	]);</div><div class="line"></div><div class="line">	<span class="keyword">yield</span> step4( ret );</div><div class="line">&#125; )</div><div class="line">.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// `*main()` completed successfully</span></div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>)</span>&#123;</div><div class="line">		<span class="comment">// Oops, something went wrong</span></div><div class="line">	&#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>The proposed <code>async function</code> syntax can express this same flow control logic without needing the <code>run(..)</code> utility, because JS will automatically know how to look for promises to wait and resume. Consider:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> ret = <span class="keyword">await</span> step1();</div><div class="line"></div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		ret = <span class="keyword">await</span> step2( ret );</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">catch</span> (err) &#123;</div><div class="line">		ret = <span class="keyword">await</span> step2Failed( err );</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	ret = <span class="keyword">await</span> <span class="built_in">Promise</span>.all( [</div><div class="line">		step3a( ret ),</div><div class="line">		step3b( ret ),</div><div class="line">		step3c( ret )</div><div class="line">	] );</div><div class="line"></div><div class="line">	<span class="keyword">await</span> step4( ret );</div><div class="line">&#125;</div><div class="line"></div><div class="line">main()</div><div class="line">.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// `main()` completed successfully</span></div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>)</span>&#123;</div><div class="line">		<span class="comment">// Oops, something went wrong</span></div><div class="line">	&#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>Instead of the <code>function *main() { ..</code> declaration, we declare with the <code>async function main() { ..</code> form. And instead of <code>yield</code>ing a promise, we <code>await</code> the promise. The call to run the function <code>main()</code> actually returns a promise that we can directly observe. That’s the equivalent to the promise that we get back from a <code>run(main)</code> call.</p>
+<p>Do you see the symmetry? <code>async function</code> is essentially syntactic sugar for the generators + promises + <code>run(..)</code> pattern; under the covers, it operates the same!</p>
+<p>If you’re a C# developer and this <code>async</code>/<code>await</code> looks familiar, it’s because this feature is directly inspired by C#’s feature. It’s nice to see language precedence informing convergence!</p>
+<p>Babel, Traceur and other transpilers already have early support for the current status of <code>async function</code>s, so you can start using them already. However, in the next section “Caveats”, we’ll see why you perhaps shouldn’t jump on that ship quite yet.</p>
+<p><strong>Note:</strong> There’s also a proposal for <code>async function*</code>, which would be called an “async generator.” You can both <code>yield</code> and <code>await</code> in the same code, and even combine those operations in the same statement: <code>x = await yield y</code>. The “async generator” proposal seems to be more in flux – namely, its return value is not fully worked out yet. Some feel it should be an <em>observable</em>, which is kind of like the combination of an iterator and a promise. For now, we won’t go further into that topic, but stay tuned as it evolves.</p>
+<h3 id="Caveats"><a href="#Caveats" class="headerlink" title="Caveats"></a>Caveats</h3><p>One unresolved point of contention with <code>async function</code> is that because it only returns a promise, there’s no way from the outside to <em>cancel</em> an <code>async function</code> instance that’s currently running. This can be a problem if the async operation is resource intensive, and you want to free up the resources as soon as you’re sure the result won’t be needed.</p>
+<p>For example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> resp = <span class="keyword">await</span> (</div><div class="line">		<span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">			<span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">			xhr.open( <span class="string">"GET"</span>, url );</div><div class="line">			xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				<span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) &#123;</div><div class="line">					<span class="keyword">if</span> (xhr.status == <span class="number">200</span>) &#123;</div><div class="line">						resolve( xhr );</div><div class="line">					&#125;</div><div class="line">					<span class="keyword">else</span> &#123;</div><div class="line">						reject( xhr.statusText );</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;;</div><div class="line">			xhr.send();</div><div class="line">		&#125; )</div><div class="line">	);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> resp.responseText;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> pr = request( <span class="string">"http://some.url.1"</span> );</div><div class="line"></div><div class="line">pr.then(</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">responseText</span>)</span>&#123;</div><div class="line">		<span class="comment">// ajax success</span></div><div class="line">	&#125;,</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">reason</span>)</span>&#123;</div><div class="line">		<span class="comment">// Oops, something went wrong</span></div><div class="line">	&#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>This <code>request(..)</code> that I’ve conceived is somewhat like the <code>fetch(..)</code> utility that’s recently been proposed for inclusion into the web platform. So the concern is, what happens if you want to use the <code>pr</code> value to somehow indicate that you want to cancel a long-running Ajax request, for example?</p>
+<p>Promises are not cancelable (at the time of writing, anyway). In my opinion, as well as many others, they never should be (see the <em>Async &amp; Performance</em> title of this series). And even if a promise did have a <code>cancel()</code> method on it, does that necessarily mean that calling <code>pr.cancel()</code> should actually propagate a cancelation signal all the way back up the promise chain to the <code>async function</code>?</p>
+<p>Several possible resolutions to this debate have surfaced:</p>
+<ul>
+<li><code>async function</code>s won’t be cancelable at all (status quo)</li>
+<li>A “cancel token” can be passed to an async function at call time</li>
+<li>Return value changes to a cancelable-promise type that’s added</li>
+<li>Return value changes to something else non-promise (e.g., observable, or control token with promise and cancel capabilities)</li>
+</ul>
+<p>At the time of this writing, <code>async function</code>s return regular promises, so it’s less likely that the return value will entirely change. But it’s too early to tell where things will land. Keep an eye on this discussion.</p>
+<h2 id="Object-observe"><a href="#Object-observe" class="headerlink" title="Object.observe(..)"></a><code>Object.observe(..)</code></h2><p>One of the holy grails of front-end web development is data binding – listening for updates to a data object and syncing the DOM representation of that data. Most JS frameworks provide some mechanism for these sorts of operations.</p>
+<p>It appears likely that post ES6, we’ll see support added directly to the language, via a utility called <code>Object.observe(..)</code>. Essentially, the idea is that you can set up a listener to observe an object’s changes, and have a callback called any time a change occurs. You can then update the DOM accordingly, for instance.</p>
+<p>There are six types of changes that you can observe:</p>
+<ul>
+<li>add</li>
+<li>update</li>
+<li>delete</li>
+<li>reconfigure</li>
+<li>setPrototype</li>
+<li>preventExtensions</li>
+</ul>
+<p>By default, you’ll be notified of all these change types, but you can filter down to only the ones you care about.</p>
+<p>Consider:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.observe(</div><div class="line">	obj,</div><div class="line">	<span class="function"><span class="keyword">function</span>(<span class="params">changes</span>)</span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> change <span class="keyword">of</span> changes) &#123;</div><div class="line">			<span class="built_in">console</span>.log( change );</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	[ <span class="string">"add"</span>, <span class="string">"update"</span>, <span class="string">"delete"</span> ]</div><div class="line">);</div><div class="line"></div><div class="line">obj.c = <span class="number">3</span>;</div><div class="line"><span class="comment">// &#123; name: "c", object: obj, type: "add" &#125;</span></div><div class="line"></div><div class="line">obj.a = <span class="number">42</span>;</div><div class="line"><span class="comment">// &#123; name: "a", object: obj, type: "update", oldValue: 1 &#125;</span></div><div class="line"></div><div class="line"><span class="keyword">delete</span> obj.b;</div><div class="line"><span class="comment">// &#123; name: "b", object: obj, type: "delete", oldValue: 2 &#125;</span></div></pre></td></tr></table></figure>
+<p>In addition to the main <code>&quot;add&quot;</code>, <code>&quot;update&quot;</code>, and <code>&quot;delete&quot;</code> change types:</p>
+<ul>
+<li>The <code>&quot;reconfigure&quot;</code> change event is fired if one of the object’s properties is reconfigured with <code>Object.defineProperty(..)</code>, such as changing its <code>writable</code> attribute. See the <em>this &amp; Object Prototypes</em> title of this series for more information.</li>
+<li><p>The <code>&quot;preventExtensions&quot;</code> change event is fired if the object is made non-extensible via <code>Object.preventExtensions(..)</code>.</p>
+<p> Because both <code>Object.seal(..)</code> and <code>Object.freeze(..)</code> also imply <code>Object.preventExtensions(..)</code>, they’ll also fire its corresponding change event. In addition, <code>&quot;reconfigure&quot;</code> change events will also be fired for each property on the object.</p>
+</li>
+<li>The <code>&quot;setPrototype&quot;</code> change event is fired if the <code>[[Prototype]]</code> of an object is changed, either by setting it with the <code>__proto__</code> setter, or using <code>Object.setPrototypeOf(..)</code>.</li>
+</ul>
+<p>Notice that these change events are notified immediately after said change. Don’t confuse this with proxies (see Chapter 7) where you can intercept the actions before they occur. Object observation lets you respond after a change (or set of changes) occurs.</p>
+<h3 id="Custom-Change-Events"><a href="#Custom-Change-Events" class="headerlink" title="Custom Change Events"></a>Custom Change Events</h3><p>In addition to the six built-in change event types, you can also listen for and fire custom change events.</p>
+<p>Consider:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">observer</span>(<span class="params">changes</span>)</span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> change <span class="keyword">of</span> changes) &#123;</div><div class="line">		<span class="keyword">if</span> (change.type == <span class="string">"recalc"</span>) &#123;</div><div class="line">			change.object.c =</div><div class="line">				change.object.oldValue +</div><div class="line">				change.object.a +</div><div class="line">				change.object.b;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeObj</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> notifier = <span class="built_in">Object</span>.getNotifier( obj );</div><div class="line"></div><div class="line">	obj.a = a * <span class="number">2</span>;</div><div class="line">	obj.b = b * <span class="number">3</span>;</div><div class="line"></div><div class="line">	<span class="comment">// queue up change events into a set</span></div><div class="line">	notifier.notify( &#123;</div><div class="line">		type: <span class="string">"recalc"</span>,</div><div class="line">		name: <span class="string">"c"</span>,</div><div class="line">		oldValue: obj.c</div><div class="line">	&#125; );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.observe(</div><div class="line">	obj,</div><div class="line">	observer,</div><div class="line">	[<span class="string">"recalc"</span>]</div><div class="line">);</div><div class="line"></div><div class="line">changeObj( <span class="number">3</span>, <span class="number">11</span> );</div><div class="line"></div><div class="line">obj.a;			<span class="comment">// 12</span></div><div class="line">obj.b;			<span class="comment">// 30</span></div><div class="line">obj.c;			<span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p>The change set (<code>&quot;recalc&quot;</code> custom event) has been queued for delivery to the observer, but not delivered yet, which is why <code>obj.c</code> is still <code>3</code>.</p>
+<p>The changes are by default delivered at the end of the current event loop (see the <em>Async &amp; Performance</em> title of this series). If you want to deliver them immediately, use <code>Object.deliverChangeRecords(observer)</code>. Once the change events are delivered, you can observe <code>obj.c</code> updated as expected:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj.c;			<span class="comment">// 42</span></div></pre></td></tr></table></figure>
+<p>In the previous example, we called <code>notifier.notify(..)</code> with the complete change event record. An alternative form for queuing change records is to use <code>performChange(..)</code>, which separates specifying the type of the event from the rest of event record’s properties (via a function callback). Consider:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">notifier.performChange( <span class="string">"recalc"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">		name: <span class="string">"c"</span>,</div><div class="line">		<span class="comment">// `this` is the object under observation</span></div><div class="line">		oldValue: <span class="keyword">this</span>.c</div><div class="line">	&#125;;</div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p>In certain circumstances, this separation of concerns may map more cleanly to your usage pattern.</p>
+<h3 id="Ending-Observation"><a href="#Ending-Observation" class="headerlink" title="Ending Observation"></a>Ending Observation</h3><p>Just like with normal event listeners, you may wish to stop observing an object’s change events. For that, you use <code>Object.unobserve(..)</code>.</p>
+<p>For example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.observe( obj, <span class="function"><span class="keyword">function</span> <span class="title">observer</span>(<span class="params">changes</span>) </span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> change <span class="keyword">of</span> changes) &#123;</div><div class="line">		<span class="keyword">if</span> (change.type == <span class="string">"setPrototype"</span>) &#123;</div><div class="line">			<span class="built_in">Object</span>.unobserve(</div><div class="line">				change.object, observer</div><div class="line">			);</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125; );</div></pre></td></tr></table></figure>
+<p>In this trivial example, we listen for change events until we see the <code>&quot;setPrototype&quot;</code> event come through, at which time we stop observing any more change events.</p>
+<h2 id="Exponentiation-Operator"><a href="#Exponentiation-Operator" class="headerlink" title="Exponentiation Operator"></a>Exponentiation Operator</h2><p>An operator has been proposed for JavaScript to perform exponentiation in the same way that <code>Math.pow(..)</code> does. Consider:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line"></div><div class="line">a ** <span class="number">4</span>;			<span class="comment">// Math.pow( a, 4 ) == 16</span></div><div class="line"></div><div class="line">a **= <span class="number">3</span>;		<span class="comment">// a = Math.pow( a, 3 )</span></div><div class="line">a;				<span class="comment">// 8</span></div></pre></td></tr></table></figure>
+<p><strong>Note:</strong> <code>**</code> is essentially the same as it appears in Python, Ruby, Perl, and others.</p>
+<h2 id="Objects-Properties-and"><a href="#Objects-Properties-and" class="headerlink" title="Objects Properties and ..."></a>Objects Properties and <code>...</code></h2><p>As we saw in the “Too Many, Too Few, Just Enough” section of Chapter 2, the <code>...</code> operator is pretty obvious in how it relates to spreading or gathering arrays. But what about objects?</p>
+<p>Such a feature was considered for ES6, but was deferred to be considered after ES6 (aka “ES7” or “ES2016” or …). Here’s how it might work in that “beyond ES6” timeframe:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o1 = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;,</div><div class="line">	o2 = &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;,</div><div class="line">	o3 = &#123; ...o1, ...o2, <span class="attr">d</span>: <span class="number">4</span> &#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( o3.a, o3.b, o3.c, o3.d );</div><div class="line"><span class="comment">// 1 2 3 4</span></div></pre></td></tr></table></figure>
+<p>The <code>...</code> operator might also be used to gather an object’s destructured properties back into an object:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o1 = &#123; <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>, <span class="attr">d</span>: <span class="number">4</span> &#125;;</div><div class="line"><span class="keyword">var</span> &#123; b, ...o2 &#125; = o1;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( b, o2.c, o2.d );		<span class="comment">// 2 3 4</span></div></pre></td></tr></table></figure>
+<p>Here, the <code>...o2</code> re-gathers the destructured <code>c</code> and <code>d</code> properties back into an <code>o2</code> object (<code>o2</code> does not have a <code>b</code> property like <code>o1</code> does).</p>
+<p>Again, these are just proposals under consideration beyond ES6. But it’ll be cool if they do land.</p>
+<h2 id="Array-includes"><a href="#Array-includes" class="headerlink" title="Array#includes(..)"></a><code>Array#includes(..)</code></h2><p>One extremely common task JS developers need to perform is searching for a value inside an array of values. The way this has always been done is:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vals = [ <span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="number">42</span>, <span class="string">"baz"</span> ];</div><div class="line"></div><div class="line"><span class="keyword">if</span> (vals.indexOf( <span class="number">42</span> ) &gt;= <span class="number">0</span>) &#123;</div><div class="line">	<span class="comment">// found it!</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The reason for the <code>&gt;= 0</code> check is because <code>indexOf(..)</code> returns a numeric value of <code>0</code> or greater if found, or <code>-1</code> if not found. In other words, we’re using an index-returning function in a boolean context. But because <code>-1</code> is truthy instead of falsy, we have to be more manual with our checks.</p>
+<p>In the <em>Types &amp; Grammar</em> title of this series, I explored another pattern that I slightly prefer:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vals = [ <span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="number">42</span>, <span class="string">"baz"</span> ];</div><div class="line"></div><div class="line"><span class="keyword">if</span> (~vals.indexOf( <span class="number">42</span> )) &#123;</div><div class="line">	<span class="comment">// found it!</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The <code>~</code> operator here conforms the return value of <code>indexOf(..)</code> to a value range that is suitably boolean coercible. That is, <code>-1</code> produces <code>0</code> (falsy), and anything else produces a non-zero (truthy) value, which is what we for deciding if we found the value or not.</p>
+<p>While I think that’s an improvement, others strongly disagree. However, no one can argue that <code>indexOf(..)</code>‘s searching logic is perfect. It fails to find <code>NaN</code> values in the array, for example.</p>
+<p>So a proposal has surfaced and gained a lot of support for adding a real boolean-returning array search method, called <code>includes(..)</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vals = [ <span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="number">42</span>, <span class="string">"baz"</span> ];</div><div class="line"></div><div class="line"><span class="keyword">if</span> (vals.includes( <span class="number">42</span> )) &#123;</div><div class="line">	<span class="comment">// found it!</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong> <code>Array#includes(..)</code> uses matching logic that will find <code>NaN</code> values, but will not distinguish between <code>-0</code> and <code>0</code> (see the <em>Types &amp; Grammar</em> title of this series). If you don’t care about <code>-0</code> values in your programs, this will likely be exactly what you’re hoping for. If you <em>do</em> care about <code>-0</code>, you’ll need to do your own searching logic, likely using the <code>Object.is(..)</code> utility (see Chapter 6).</p>
+<h2 id="SIMD"><a href="#SIMD" class="headerlink" title="SIMD"></a>SIMD</h2><p>We cover Single Instruction, Multiple Data (SIMD) in more detail in the <em>Async &amp; Performance</em> title of this series, but it bears a brief mention here, as it’s one of the next likely features to land in a future JS.</p>
+<p>The SIMD API exposes various low-level (CPU) instructions that can operate on more than a single number value at a time. For example, you’ll be able to specify two <em>vectors</em> of 4 or 8 numbers each, and multiply the respective elements all at once (data parallelism!).</p>
+<p>Consider:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> v1 = SIMD.float32x4( <span class="number">3.14159</span>, <span class="number">21.0</span>, <span class="number">32.3</span>, <span class="number">55.55</span> );</div><div class="line"><span class="keyword">var</span> v2 = SIMD.float32x4( <span class="number">2.1</span>, <span class="number">3.2</span>, <span class="number">4.3</span>, <span class="number">5.4</span> );</div><div class="line"></div><div class="line">SIMD.float32x4.mul( v1, v2 );</div><div class="line"><span class="comment">// [ 6.597339, 67.2, 138.89, 299.97 ]</span></div></pre></td></tr></table></figure>
+<p>SIMD will include several other operations besides <code>mul(..)</code> (multiplication), such as <code>sub()</code>, <code>div()</code>, <code>abs()</code>, <code>neg()</code>, <code>sqrt()</code>, and many more.</p>
+<p>Parallel math operations are critical for the next generations of high performance JS applications.</p>
+<h2 id="WebAssembly-WASM"><a href="#WebAssembly-WASM" class="headerlink" title="WebAssembly (WASM)"></a>WebAssembly (WASM)</h2><p>Brendan Eich made a late breaking announcement near the completion of the first edition of this title that has the potential to significantly impact the future path of JavaScript: WebAssembly (WASM). We will not be able to cover WASM in detail here, as it’s extremely early at the time of this writing. But this title would be incomplete without at least a brief mention of it.</p>
+<p>One of the strongest pressures on the recent (and near future) design changes of the JS language has been the desire that it become a more suitable target for transpilation/cross-compilation from other languages (like C/C++, ClojureScript, etc.). Obviously, performance of code running as JavaScript has been a primary concern.</p>
+<p>As discussed in the <em>Async &amp; Performance</em> title of this series, a few years ago a group of developers at Mozilla introduced an idea to JavaScript called ASM.js. ASM.js is a subset of valid JS that most significantly restricts certain actions that make code hard for the JS engine to optimize. The result is that ASM.js compatible code running in an ASM-aware engine can run remarkably faster, nearly on par with native optimized C equivalents. Many viewed ASM.js as the most likely backbone on which performance-hungry applications would ride in JavaScript.</p>
+<p>In other words, all roads to running code in the browser <em>lead through JavaScript</em>.</p>
+<p>That is, until the WASM announcement. WASM provides an alternate path for other languages to target the browser’s runtime environment without having to first pass through JavaScript. Essentially, if WASM takes off, JS engines will grow an extra capability to execute a binary format of code that can be seen as somewhat similar to a bytecode (like that which runs on the JVM).</p>
+<p>WASM proposes a format for a binary representation of a highly compressed AST (syntax tree) of code, which can then give instructions directly to the JS engine and its underpinnings, without having to be parsed by JS, or even behave by the rules of JS. Languages like C or C++ can be compiled directly to the WASM format instead of ASM.js, and gain an extra speed advantage by skipping the JS parsing.</p>
+<p>The near term for WASM is to have parity with ASM.js and indeed JS. But eventually, it’s expected that WASM would grow new capabilities that surpass anything JS could do. For example, the pressure for JS to evolve radical features like threads – a change that would certainly send major shockwaves through the JS ecosystem – has a more hopeful future as a future WASM extension, relieving the pressure to change JS.</p>
+<p>In fact, this new roadmap opens up many new roads for many languages to target the web runtime. That’s an exciting new future path for the web platform!</p>
+<p>What does it mean for JS? Will JS become irrelevant or “die”? Absolutely not. ASM.js will likely not see much of a future beyond the next couple of years, but the majority of JS is quite safely anchored in the web platform story.</p>
+<p>Proponents of WASM suggest its success will mean that the design of JS will be protected from pressures that would have eventually stretched it beyond assumed breaking points of reasonability. It is projected that WASM will become the preferred target for high-performance parts of applications, as authored in any of a myriad of different languages.</p>
+<p>Interestingly, JavaScript is one of the lesser likely languages to target WASM in the future. There may be future changes that carve out subsets of JS that might be tenable for such targeting, but that path doesn’t seem high on the priority list.</p>
+<p>While JS likely won’t be much of a WASM funnel, JS code and WASM code will be able to interoperate in the most significant ways, just as naturally as current module interactions. You can imagine calling a JS function like <code>foo()</code> and having that actually invoke a WASM function of that name with the power to run well outside the constraints of the rest of your JS.</p>
+<p>Things which are currently written in JS will probably continue to always be written in JS, at least for the foreseeable future. Things which are transpiled to JS will probably eventually at least consider targeting WASM instead. For things which need the utmost in performance with minimal tolerance for layers of abstraction, the likely choice will be to find a suitable non-JS language to author in, then targeting WASM.</p>
+<p>There’s a good chance this shift will be slow, and will be years in the making. WASM landing in all the major browser platforms is probably a few years out at best. In the meantime, the WASM project (<a href="https://github.com/WebAssembly" target="_blank" rel="external">https://github.com/WebAssembly</a>) has an early polyfill to demonstrate proof-of-concept for its basic tenets.</p>
+<p>But as time goes on, and as WASM learns new non-JS tricks, it’s not too much a stretch of imagination to see some currently-JS things being refactored to a WASM-targetable language. For example, the performance sensitive parts of frameworks, game engines, and other heavily used tools might very well benefit from such a shift. Developers using these tools in their web applications likely won’t notice much difference in usage or integration, but will just automatically take advantage of the performance and capabilities.</p>
+<p>What’s certain is that the more real WASM becomes over time, the more it means to the trajectory and design of JavaScript. It’s perhaps one of the most important “beyond ES6” topics developers should keep an eye on.</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>If all the other books in this series essentially propose this challenge, “you (may) not know JS (as much as you thought),” this book has instead suggested, “you don’t know JS anymore.” The book has covered a ton of new stuff added to the language in ES6. It’s an exciting collection of new language features and paradigms that will forever improve our JS programs.</p>
+<p>But JS is not done with ES6! Not even close. There’s already quite a few features in various stages of development for the “beyond ES6” timeframe. In this chapter, we briefly looked at some of the most likely candidates to land in JS very soon.</p>
+<p><code>async function</code>s are powerful syntactic sugar on top of the generators + promises pattern (see Chapter 4). <code>Object.observe(..)</code> adds direct native support for observing object change events, which is critical for implementing data binding. The <code>**</code> exponentiation operator, <code>...</code> for object properties, and <code>Array#includes(..)</code> are all simple but helpful improvements to existing mechanisms. Finally, SIMD ushers in a new era in the evolution of high performance JS.</p>
+<p>Cliché as it sounds, the future of JS is really bright! The challenge of this series, and indeed of this book, is incumbent on every reader now. What are you waiting for? It’s time to get learning and exploring!</p>
+
+  
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/search.css">
+    <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+      appId: 'RIQDWWF2ZM',
+      apiKey: '894420bd3782877df9cf7bd89e21d283',
+      indexName: 'hexo',
+      inputSelector: selector,
+      })
+    })
+    </script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
+    <script>
+      const search = instantsearch({
+        appId: 'RIQDWWF2ZM',
+        apiKey: '894420bd3782877df9cf7bd89e21d283',
+        indexName: 'hexo'
+      });
+      search.addWidget(
+        instantsearch.widgets.hits({
+          container: '#hits',
+          templates: {
+            empty: 'No results',
+            item: '<a href="{{permalink}}" class="search-item"><span>{{title}}</span></a>'
+          }
+        })
+      );
+      search.addWidget(
+        instantsearch.widgets.searchBox({
+          container: '#search-query',
+          placeholder: ''
+        })
+      );
+      search.start();
+    </script> -->
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+
+  </body>
+</html>

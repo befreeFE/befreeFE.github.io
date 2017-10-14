@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>Chapter 1 — 阅读寻知</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "es6"</script>
+    <style>
+      /*默认滚动条样式修改*/
+     ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+     ::-webkit-scrollbar-track {
+      background: whiteSmoke;
+      -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+     ::-webkit-scrollbar-thumb {
+      background: #42b983;
+      border-radius: 10px;
+      border: whiteSmoke solid 3px;
+    }
+
+     ::-webkit-scrollbar-thumb:hover {
+      background: #b5b5b5;
+    }
+    </style>
+  </head>
+  <body class="docs">
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/" style="display:flex;align-items:center">
+    <img src="/images/logo.png" style="width:35px;height:35px">
+    <span style="font-size: 1em;margin-left: 6px">阅读寻知</span>
+  </a>
+  <ul id="nav">
+    <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link current">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+  </ul>
+</div>
+
+    
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link current">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+    </ul>
+    <div class="list">
+      <ul class="menu-root">
+    
+        
+        
+        <li>
+            <a href="/Translate/es6/index.html" class="sidebar-link current">Chapter 1</a>
+        </li>
+    
+</ul>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="content es6 with-sidebar ">
+  
+    
+      
+    
+  
+  
+    <h1>Chapter 1</h1>
+  
+  
+  <h1 id="You-Don’t-Know-JS-ES6-amp-Beyond"><a href="#You-Don’t-Know-JS-ES6-amp-Beyond" class="headerlink" title="You Don’t Know JS: ES6 &amp; Beyond"></a>You Don’t Know JS: ES6 &amp; Beyond</h1><h1 id="Chapter-1-ES-Now-amp-Future"><a href="#Chapter-1-ES-Now-amp-Future" class="headerlink" title="Chapter 1: ES? Now &amp; Future"></a>Chapter 1: ES? Now &amp; Future</h1><p>Before you dive into this book, you should have a solid working proficiency over JavaScript up to the most recent standard (at the time of this writing), which is commonly called <em>ES5</em> (technically ES 5.1). Here, we plan to talk squarely about the upcoming <em>ES6</em>, as well as cast our vision beyond to understand how JS will evolve moving forward.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">在专研这本书之前，你应该先熟悉JavaScript的最新标准（撰写本书前）。</div><div class="line">通常被称为ES5（ES5.1），这里我们将正视即将到来的ES6，这也将改变我们对JavaScript的认识。</div></pre></td></tr></table></figure>
+<p>If you are still looking for confidence with JavaScript, I highly recommend you read the other titles in this series first:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果你还没有足够的信心接触新版本，建议你先阅读以下系列。</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p><em>Up &amp; Going</em>: Are you new to programming and JS? This is the roadmap you need to consult as you start your learning journey.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">你是js（编程）新手吗？这本书可以帮你开启学习旅程</div></pre></td></tr></table></figure>
+</li>
+<li><p><em>Scope &amp; Closures</em>: Did you know that JS lexical scope is based on compiler (not interpreter!) semantics? Can you explain how closures are a direct result of lexical scope and functions as values?</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">你知道js词法作用域是基于编译器（非解释器）吗？你能正确分析出闭包的返回值吗</div></pre></td></tr></table></figure>
+<ul>
+<li><em>this &amp; Object Prototypes</em>: Can you recite the four simple rules for how <code>this</code> is bound? Have you been muddling through fake “classes” in JS instead of adopting the simpler “behavior delegation” design pattern? Ever heard of <em>objects linked to other objects</em> (OLOO)?</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">你能列举this绑定的4个规则吗？你有用过class语法糖来替代原型模式吗？有听说过OLOO吗</div></pre></td></tr></table></figure>
+<ul>
+<li><em>Types &amp; Grammar</em>: Do you know the built-in types in JS, and more importantly, do you know how to properly and safely use coercion between types? How comfortable are you with the nuances of JS grammar/syntax?</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">你知道js的内置类型吗，你知道如何正确使用类型转换吗？你了解js语法的细微差别吗？</div></pre></td></tr></table></figure>
+<ul>
+<li><em>Async &amp; Performance</em>: Are you still using callbacks to manage your asynchrony? Can you explain what a promise is and why/how it solves “callback hell”? Do you know how to use generators to improve the legibility of async code? What exactly constitutes mature optimization of JS programs and individual operations?</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">你是否还在使用回答函数来处理异步，你能解释promise如何解决回调地狱的吗？</div><div class="line">你知道如何使用generators来提供代码的可读性吗？究竟是什么构成js程序和单个操作的成熟优化。</div></pre></td></tr></table></figure>
+<p>If you’ve already read all those titles and you feel pretty comfortable with the topics they cover, it’s time we dive into the evolution of JS to explore all the changes coming not only soon but farther over the horizon.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果你已经阅读以上系列并同意里面的观点，那么可以开始拥抱JavaScript即将到来的改变。</div></pre></td></tr></table></figure>
+<p>Unlike ES5, ES6 is not just a modest set of new APIs added to the language. It incorporates a whole slew of new syntactic forms, some of which may take quite a bit of getting used to. There’s also a variety of new organization forms and new API helpers for various data types.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">不像ES5，ES6不仅给语言添加了新的API，而且包含了一序列新的语法形，有些可能需要一段时间来适应。还有各种新的组织形式和针对各种数据类型的新辅助API</div></pre></td></tr></table></figure>
+<p>ES6 is a radical jump forward for the language. Even if you think you know JS in ES5, ES6 is full of new stuff you <em>don’t know yet</em>, so get ready! This book explores all the major themes of ES6 that you need to get up to speed on, and even gives you a glimpse of future features coming down the track that you should be aware of.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ES6是语言质的飞跃，即使你熟悉ES5，但ES6还有你更多不知道的。准备好了吗？这本书将讲述所有你需要快速掌握的ES6主要知识点，同样会向你介绍一些你应该注意的一些将要到来的新特性。</div></pre></td></tr></table></figure>
+<p><strong>Warning:</strong> All code in this book assumes an ES6+ environment. At the time of this writing, ES6 support varies quite a bit in browsers and JS environments (like Node.js), so your mileage may vary.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">注意：本书所有代码假设运行在ES6的环境下，Es6支持各种浏览器和js环境（node），所以你将有不一样的体验。</div></pre></td></tr></table></figure>
+<h2 id="Versioning"><a href="#Versioning" class="headerlink" title="Versioning"></a>Versioning</h2><p>The JavaScript standard is referred to officially as “ECMAScript” (abbreviated “ES”), and up until just recently has been versioned entirely by ordinal number (i.e., “5” for “5th edition”).</p>
+<p>The earliest versions, ES1 and ES2, were not widely known or implemented. ES3 was the first widespread baseline for JavaScript, and constitutes the JavaScript standard for browsers like IE6-8 and older Android 2.x mobile browsers. For political reasons beyond what we’ll cover here, the ill-fated ES4 never came about.</p>
+<p>In 2009, ES5 was officially finalized (later ES5.1 in 2011), and settled as the widespread standard for JS for the modern revolution and explosion of browsers, such as Firefox, Chrome, Opera, Safari, and many others.</p>
+<p>Leading up to the expected <em>next</em> version of JS (slipped from 2013 to 2014 and then 2015), the obvious and common label in discourse has been ES6.</p>
+<p>However, late into the ES6 specification timeline, suggestions have surfaced that versioning may in the future switch to a year-based schema, such as ES2016 (aka ES7) to refer to whatever version of the specification is finalized before the end of 2016. Some disagree, but ES6 will likely maintain its dominant mindshare over the late-change substitute ES2015. However, ES2016 may in fact signal the new year-based schema.</p>
+<p>It has also been observed that the pace of JS evolution is much faster even than single-year versioning. As soon as an idea begins to progress through standards discussions, browsers start prototyping the feature, and early adopters start experimenting with the code.</p>
+<p>Usually well before there’s an official stamp of approval, a feature is de facto standardized by virtue of this early engine/tooling prototyping. So it’s also valid to consider the future of JS versioning to be per-feature rather than per-arbitrary-collection-of-major-features (as it is now) or even per-year (as it may become).</p>
+<p>The takeaway is that the version labels stop being as important, and JavaScript starts to be seen more as an evergreen, living standard. The best way to cope with this is to stop thinking about your code base as being “ES6-based,” for instance, and instead consider it feature by feature for support.</p>
+<h2 id="Transpiling"><a href="#Transpiling" class="headerlink" title="Transpiling"></a>Transpiling</h2><p>Made even worse by the rapid evolution of features, a problem arises for JS developers who at once may both strongly desire to use new features while at the same time being slapped with the reality that their sites/apps may need to support older browsers without such support.</p>
+<p>The way ES5 appears to have played out in the broader industry, the typical mindset was that code bases waited to adopt ES5 until most if not all pre-ES5 environments had fallen out of their support spectrum. As a result, many are just recently (at the time of this writing) starting to adopt things like <code>strict</code> mode, which landed in ES5 over five years ago.</p>
+<p>It’s widely considered to be a harmful approach for the future of the JS ecosystem to wait around and trail the specification by so many years. All those responsible for evolving the language desire for developers to begin basing their code on the new features and patterns as soon as they stabilize in specification form and browsers have a chance to implement them.</p>
+<p>So how do we resolve this seeming contradiction? The answer is tooling, specifically a technique called <em>transpiling</em> (transformation + compiling). Roughly, the idea is to use a special tool to transform your ES6 code into equivalent (or close!) matches that work in ES5 environments.</p>
+<p>For example, consider shorthand property definitions (see “Object Literal Extensions” in Chapter 2). Here’s the ES6 form:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	foo		<span class="comment">// means `foo: foo`</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">obj.foo;	<span class="comment">// [1,2,3]</span></div></pre></td></tr></table></figure>
+<p>But (roughly) here’s how that transpiles:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	foo: foo</div><div class="line">&#125;;</div><div class="line"></div><div class="line">obj.foo;	<span class="comment">// [1,2,3]</span></div></pre></td></tr></table></figure>
+<p>This is a minor but pleasant transformation that lets us shorten the <code>foo: foo</code> in an object literal declaration to just <code>foo</code>, if the names are the same.</p>
+<p>Transpilers perform these transformations for you, usually in a build workflow step similar to how you perform linting, minification, and other similar operations.</p>
+<h3 id="Shims-Polyfills"><a href="#Shims-Polyfills" class="headerlink" title="Shims/Polyfills"></a>Shims/Polyfills</h3><p>Not all new ES6 features need a transpiler. Polyfills (aka shims) are a pattern for defining equivalent behavior from a newer environment into an older environment, when possible. Syntax cannot be polyfilled, but APIs often can be.</p>
+<p>For example, <code>Object.is(..)</code> is a new utility for checking strict equality of two values but without the nuanced exceptions that <code>===</code> has for <code>NaN</code> and <code>-0</code> values. The polyfill for <code>Object.is(..)</code> is pretty easy:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!<span class="built_in">Object</span>.is) &#123;</div><div class="line">	<span class="built_in">Object</span>.is = <span class="function"><span class="keyword">function</span>(<span class="params">v1, v2</span>) </span>&#123;</div><div class="line">		<span class="comment">// test for `-0`</span></div><div class="line">		<span class="keyword">if</span> (v1 === <span class="number">0</span> &amp;&amp; v2 === <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span> / v1 === <span class="number">1</span> / v2;</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// test for `NaN`</span></div><div class="line">		<span class="keyword">if</span> (v1 !== v1) &#123;</div><div class="line">			<span class="keyword">return</span> v2 !== v2;</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// everything else</span></div><div class="line">		<span class="keyword">return</span> v1 === v2;</div><div class="line">	&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Tip:</strong> Pay attention to the outer <code>if</code> statement guard wrapped around the polyfill. This is an important detail, which means the snippet only defines its fallback behavior for older environments where the API in question isn’t already defined; it would be very rare that you’d want to overwrite an existing API.</p>
+<p>There’s a great collection of ES6 shims called “ES6 Shim” (<a href="https://github.com/paulmillr/es6-shim/" target="_blank" rel="external">https://github.com/paulmillr/es6-shim/</a>) that you should definitely adopt as a standard part of any new JS project!</p>
+<p>It is assumed that JS will continue to evolve constantly, with browsers rolling out support for features continually rather than in large chunks. So the best strategy for keeping updated as it evolves is to just introduce polyfill shims into your code base, and a transpiler step into your build workflow, right now and get used to that new reality.</p>
+<p>If you decide to keep the status quo and just wait around for all browsers without a feature supported to go away before you start using the feature, you’re always going to be way behind. You’ll sadly be missing out on all the innovations designed to make writing JavaScript more effective, efficient, and robust.</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>ES6 (some may try to call it ES2015) is just landing as of the time of this writing, and it has lots of new stuff you need to learn!</p>
+<p>But it’s even more important to shift your mindset to align with the new way that JavaScript is going to evolve. It’s not just waiting around for years for some official document to get a vote of approval, as many have done in the past.</p>
+<p>Now, JavaScript features land in browsers as they become ready, and it’s up to you whether you’ll get on the train early or whether you’ll be playing costly catch-up games years from now.</p>
+<p>Whatever labels that future JavaScript adopts, it’s going to move a lot quicker than it ever has before. Transpilers and shims/polyfills are important tools to keep you on the forefront of where the language is headed.</p>
+<p>If there’s any narrative important to understand about the new reality for JavaScript, it’s that all JS developers are strongly implored to move from the trailing edge of the curve to the leading edge. And learning ES6 is where that all starts!</p>
+
+  
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/search.css">
+    <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+      appId: 'RIQDWWF2ZM',
+      apiKey: '894420bd3782877df9cf7bd89e21d283',
+      indexName: 'hexo',
+      inputSelector: selector,
+      })
+    })
+    </script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
+    <script>
+      const search = instantsearch({
+        appId: 'RIQDWWF2ZM',
+        apiKey: '894420bd3782877df9cf7bd89e21d283',
+        indexName: 'hexo'
+      });
+      search.addWidget(
+        instantsearch.widgets.hits({
+          container: '#hits',
+          templates: {
+            empty: 'No results',
+            item: '<a href="{{permalink}}" class="search-item"><span>{{title}}</span></a>'
+          }
+        })
+      );
+      search.addWidget(
+        instantsearch.widgets.searchBox({
+          container: '#search-query',
+          placeholder: ''
+        })
+      );
+      search.start();
+    </script> -->
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>HackerNews 克隆 — 阅读寻知</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "examples"</script>
+    <style>
+      /*默认滚动条样式修改*/
+     ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+     ::-webkit-scrollbar-track {
+      background: whiteSmoke;
+      -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+     ::-webkit-scrollbar-thumb {
+      background: #42b983;
+      border-radius: 10px;
+      border: whiteSmoke solid 3px;
+    }
+
+     ::-webkit-scrollbar-thumb:hover {
+      background: #b5b5b5;
+    }
+    </style>
+  </head>
+  <body class="docs">
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/" style="display:flex;align-items:center">
+    <img src="/images/logo.png" style="width:35px;height:35px">
+    <span style="font-size: 1em;margin-left: 6px">阅读寻知</span>
+  </a>
+  <ul id="nav">
+    <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link current">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link current">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link current">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+  </ul>
+</div>
+
+    
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      <li>
+    <form id="search-form" style="margin-right: 250px">
+        <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+    </form>
+</li>
+
+<li class="nav-dropdown-container">
+  <a class="nav-link current">JavaScript</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/JavaScript/guide/" class="nav-link">教程</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link current">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">Translate</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/Translate/es6/" class="nav-link">es6</a></li>
+      <!-- <li><a href="/JavaScript/api/" class="nav-link">API</a></li> -->
+      <!-- <li><a href="/JavaScript/examples/" class="nav-link current">示例</a></li> -->
+    </ul></li>
+  </ul>
+</li>
+    </ul>
+    <div class="list">
+      <ul class="menu-root">
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/index.html" class="sidebar-link">Markdown 编辑器</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/commits.html" class="sidebar-link">GitHub 提交</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/grid-component.html" class="sidebar-link">网格组件</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/tree-view.html" class="sidebar-link">树形视图</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/svg.html" class="sidebar-link">SVG 图表</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/modal.html" class="sidebar-link">模式组件</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/elastic-header.html" class="sidebar-link">具有伸缩性的 Header</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/select2.html" class="sidebar-link">内嵌组件</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/deepstream.html" class="sidebar-link">实时 deepstreamHub</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/firebase.html" class="sidebar-link">Firebase + 验证</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/todomvc.html" class="sidebar-link">TodoMVC</a>
+        </li>
+    
+        
+        
+        <li>
+            <a href="/JavaScript/examples/hackernews.html" class="sidebar-link current">HackerNews 克隆</a>
+        </li>
+    
+</ul>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="content examples with-sidebar ">
+  
+    
+      
+    
+  
+  
+    <h1>HackerNews 克隆 Example</h1>
+  
+  
+  <blockquote>
+<p>HackerNews 克隆是基于 HN 的官方 firebase API 、Vue 2.0 、Vue Router 和 Vuex 来构建的，使用服务器端渲染。</p>
+</blockquote>
+
+<div style="max-width: 600px;">
+  <a href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank">
+    <img style="width: 100%;" src="/images/hn.png">
+  </a>
+</div>
+
+<blockquote>
+<p><a href="https://vue-hn.now.sh/" target="_blank" rel="external">Live Demo</a><br>注：如果在一段时间内没有人访问过该网站，则需要一些加载时间。</p>
+<p>[<a href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank" rel="external">Source</a>]</p>
+</blockquote>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>服务器端渲染<ul>
+<li>Vue + Vue Router + Vuex</li>
+<li>服务端数据提前获取</li>
+<li>客户端状态 &amp; DOM 合并</li>
+</ul>
+</li>
+<li>单文件 Vue 组件<ul>
+<li>开发时进行热加载</li>
+<li>生产时抽出 CSS</li>
+</ul>
+</li>
+<li>使用 FLIP 动画进行实时列表更新</li>
+</ul>
+<h2 id="结构概览"><a href="#结构概览" class="headerlink" title="结构概览"></a>结构概览</h2><p><img width="973" alt="Hackernew clone architecture overview" src="/images/hn-architecture.png"></p>
+
+  
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/search.css">
+    <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+      appId: 'RIQDWWF2ZM',
+      apiKey: '894420bd3782877df9cf7bd89e21d283',
+      indexName: 'hexo',
+      inputSelector: selector,
+      })
+    })
+    </script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
+    <script>
+      const search = instantsearch({
+        appId: 'RIQDWWF2ZM',
+        apiKey: '894420bd3782877df9cf7bd89e21d283',
+        indexName: 'hexo'
+      });
+      search.addWidget(
+        instantsearch.widgets.hits({
+          container: '#hits',
+          templates: {
+            empty: 'No results',
+            item: '<a href="{{permalink}}" class="search-item"><span>{{title}}</span></a>'
+          }
+        })
+      );
+      search.addWidget(
+        instantsearch.widgets.searchBox({
+          container: '#search-query',
+          placeholder: ''
+        })
+      );
+      search.start();
+    </script> -->
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+
+  </body>
+</html>
