@@ -88,5 +88,5 @@ theme: vue
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/befreeFE/befreeFE.github.io
+  repo: git@github.com:befreeFE/befreeFE.github.io.git
   branch: master

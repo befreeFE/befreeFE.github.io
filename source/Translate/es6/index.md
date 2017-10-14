@@ -9,21 +9,66 @@ order: 1
 
 Before you dive into this book, you should have a solid working proficiency over JavaScript up to the most recent standard (at the time of this writing), which is commonly called *ES5* (technically ES 5.1). Here, we plan to talk squarely about the upcoming *ES6*, as well as cast our vision beyond to understand how JS will evolve moving forward.
 
-If you are still looking for confidence with JavaScript, I highly recommend you read the other titles in this series first:
+```tt
+在专研这本书之前，你应该先熟悉JavaScript的最新标准（撰写本书前）。
+通常被称为ES5（ES5.1），这里我们将正视即将到来的ES6，这也将改变我们对JavaScript的认识。
+```
 
+If you are still looking for confidence with JavaScript, I highly recommend you read the other titles in this series first:
+```tt
+如果你还没有足够的信心接触新版本，建议你先阅读以下系列。
+```
 * *Up & Going*: Are you new to programming and JS? This is the roadmap you need to consult as you start your learning journey.
+```tt
+你是js（编程）新手吗？这本书可以帮你开启学习旅程
+```
 * *Scope & Closures*: Did you know that JS lexical scope is based on compiler (not interpreter!) semantics? Can you explain how closures are a direct result of lexical scope and functions as values?
+
+```tt
+你知道js词法作用域是基于编译器（非解释器）吗？你能正确分析出闭包的返回值吗
+```
 * *this & Object Prototypes*: Can you recite the four simple rules for how `this` is bound? Have you been muddling through fake "classes" in JS instead of adopting the simpler "behavior delegation" design pattern? Ever heard of *objects linked to other objects* (OLOO)?
+
+```tt
+你能列举this绑定的4个规则吗？你有用过class语法糖来替代原型模式吗？有听说过OLOO吗
+```
+
 * *Types & Grammar*: Do you know the built-in types in JS, and more importantly, do you know how to properly and safely use coercion between types? How comfortable are you with the nuances of JS grammar/syntax?
+
+```tt
+你知道js的内置类型吗，你知道如何正确使用类型转换吗？你了解js语法的细微差别吗？
+```
+
 * *Async & Performance*: Are you still using callbacks to manage your asynchrony? Can you explain what a promise is and why/how it solves "callback hell"? Do you know how to use generators to improve the legibility of async code? What exactly constitutes mature optimization of JS programs and individual operations?
+
+```tt
+你是否还在使用回答函数来处理异步，你能解释promise如何解决回调地狱的吗？
+你知道如何使用generators来提供代码的可读性吗？究竟是什么构成js程序和单个操作的成熟优化。
+```
 
 If you've already read all those titles and you feel pretty comfortable with the topics they cover, it's time we dive into the evolution of JS to explore all the changes coming not only soon but farther over the horizon.
 
+```tt
+如果你已经阅读以上系列并同意里面的观点，那么可以开始拥抱JavaScript即将到来的改变。
+```
+
 Unlike ES5, ES6 is not just a modest set of new APIs added to the language. It incorporates a whole slew of new syntactic forms, some of which may take quite a bit of getting used to. There's also a variety of new organization forms and new API helpers for various data types.
+
+```tt
+不像ES5，ES6不仅给语言添加了新的API，而且包含了一序列新的语法形，有些可能需要一段时间来适应。还有各种新的组织形式和针对各种数据类型的新辅助API
+```
 
 ES6 is a radical jump forward for the language. Even if you think you know JS in ES5, ES6 is full of new stuff you *don't know yet*, so get ready! This book explores all the major themes of ES6 that you need to get up to speed on, and even gives you a glimpse of future features coming down the track that you should be aware of.
 
+```tt
+ES6是语言质的飞跃，即使你熟悉ES5，但ES6还有你更多不知道的。准备好了吗？这本书将讲述所有你需要快速掌握的ES6主要知识点，同样会向你介绍一些你应该注意的一些将要到来的新特性。
+```
+
 **Warning:** All code in this book assumes an ES6+ environment. At the time of this writing, ES6 support varies quite a bit in browsers and JS environments (like Node.js), so your mileage may vary.
+
+```tt
+注意：本书所有代码假设运行在ES6的环境下，Es6支持各种浏览器和js环境（node），所以你将有不一样的体验。
+```
 
 ## Versioning
 
